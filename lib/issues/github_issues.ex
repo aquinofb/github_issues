@@ -21,7 +21,7 @@ defmodule Issues.GithubIssues do
     { :ok, :jsx.decode(body) }
   end
 
-  def handle_response({:ok, %{status_code: _, body: body}}) do
+  def handle_response({:ok, %{status_code: status, body: body}}) do
     Logger.error "Error #{status} returned"
     { :error, :jsx.decode(body) }
   end
